@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>开放染色质预测增强子并验证 | 袁仲之的生信之旅</title><meta name="keywords" content="DNase-seq,Open Chromatin,enhancer"><meta name="author" content="Yuanzhen"><meta name="copyright" content="Yuanzhen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简介 增强子是真核生物中基因表达的重要调节剂。增强子的功能独立于它们与靶基因启动子的距离和方向。因此，增强剂一直难以识别。在植物中仅鉴定出少数增强子，尤其是远距离基因间增强子。Bo Zhu[1]等开发了一种增强子预测系统，该系统仅基于拟南芥基因组中的 DNase I 超敏位点 (DHS)。  背景 真核生物中的基因表达受调控蛋白与启动子、增强子和其他顺式调控 DNA 元件 (CRE) 的精心结合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开放染色质预测增强子并验证">
+<meta property="og:url" content="https://yuanzhen-lucas.github.io/2022/08/09/%E5%BC%80%E6%94%BE%E6%9F%93%E8%89%B2%E8%B4%A8%E9%A2%84%E6%B5%8B%E5%A2%9E%E5%BC%BA%E5%AD%90%E5%B9%B6%E9%AA%8C%E8%AF%81/index.html">
+<meta property="og:site_name" content="袁仲之的生信之旅">
+<meta property="og:description" content="简介 增强子是真核生物中基因表达的重要调节剂。增强子的功能独立于它们与靶基因启动子的距离和方向。因此，增强剂一直难以识别。在植物中仅鉴定出少数增强子，尤其是远距离基因间增强子。Bo Zhu[1]等开发了一种增强子预测系统，该系统仅基于拟南芥基因组中的 DNase I 超敏位点 (DHS)。  背景 真核生物中的基因表达受调控蛋白与启动子、增强子和其他顺式调控 DNA 元件 (CRE) 的精心结合">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yuanzhen-lucas.github.io/img/index.jpg">
+<meta property="article:published_time" content="2022-08-09T02:03:52.000Z">
+<meta property="article:modified_time" content="2022-08-10T03:40:20.357Z">
+<meta property="article:author" content="Yuanzhen">
+<meta property="article:tag" content="DNase-seq">
+<meta property="article:tag" content="Open Chromatin">
+<meta property="article:tag" content="enhancer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuanzhen-lucas.github.io/img/index.jpg"><link rel="shortcut icon" href="https://img.shields.io/badge/-%E8%A2%81-orange"><link rel="canonical" href="https://yuanzhen-lucas.github.io/2022/08/09/%E5%BC%80%E6%94%BE%E6%9F%93%E8%89%B2%E8%B4%A8%E9%A2%84%E6%B5%8B%E5%A2%9E%E5%BC%BA%E5%AD%90%E5%B9%B6%E9%AA%8C%E8%AF%81/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '开放染色质预测增强子并验证',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-10 11:40:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">袁仲之的生信之旅</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">开放染色质预测增强子并验证</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-09T02:03:52.000Z" title="发表于 2022-08-09 10:03:52">2022-08-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-10T03:40:20.357Z" title="更新于 2022-08-10 11:40:20">2022-08-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Literature/">Literature</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="开放染色质预测增强子并验证"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
+<p>增强子是真核生物中基因表达的重要调节剂。增强子的功能独立于它们与靶基因启动子的距离和方向。因此，增强剂一直难以识别。在植物中仅鉴定出少数增强子，尤其是远距离基因间增强子。Bo Zhu<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>等开发了一种增强子预测系统，该系统仅基于拟南芥基因组中的 DNase I 超敏位点 (DHS)。</p>
+<h2 id="背景"><a class="markdownIt-Anchor" href="#背景"></a> 背景</h2>
+<p>真核生物中的基因表达受调控蛋白与启动子、增强子和其他顺式调控 DNA 元件 (CRE) 的精心结合来调控。启动子和增强子是最常见和最容易理解的 CRE。大多数真核基因包含一个靠近转录起始位点 (TSS) 的启动子。增强子通常以细胞类型或组织特异性方式募集转录因子 (TF) 来调节靶基因的转录<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。基因的表达可以在不同发育阶段和/或在不同组织中受到多种增强子的调控。此外，增强子的作用独立于它们与靶基因启动子的距离和方向<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>。因此，增强子可以位于基因的前端或末端，在基因内或远离基因，这使得增强子比启动子更难识别。</p>
+<p>包含活性 CRE 的基因组区域将被调节蛋白结合，核小体耗尽或处于动态核小体修饰或置换状态<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>。与此类基因组区域相关的一个共同特征是对 DNase I 切割的显着敏感性<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>。这些基因组区域称为 DNase I 超敏位点 (DHS)，可以通过 DNase I 消化和高通量测序 (DNase-seq) 来识别。</p>
+<h2 id="结果"><a class="markdownIt-Anchor" href="#结果"></a> 结果</h2>
+<h3 id="基于位于基因间区域的-dhs-的增强子预测"><a class="markdownIt-Anchor" href="#基于位于基因间区域的-dhs-的增强子预测"></a> 基于位于基因间区域的 DHS 的增强子预测</h3>
+<h4 id="方法"><a class="markdownIt-Anchor" href="#方法"></a> 方法</h4>
+<p>大多数增强子调节它们最近的基因（Mendenhall 等人，2013；Ghavi-Helm 等人，2014；Kvon 等人，2014）。染色质构象捕获 (3C) 数据显示，局部染色体内相互作用代表了拟南芥基因组构象的主要结构特征（Feng 等人，2014；Wang 等人，2015）</p>
+<p>活跃的哺乳动物增强子与组蛋白修饰标记 H3K27ac 明显相关（Heintzman 等人，2007、2009；Creyghton 等人，2010；Zentner 等人，2011）。相比之下，稳定的哺乳动物增强子的特点是 H3K27ac 的缺失和 H3K27me3 的富集<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>。相比之下，该文章预测增强子区域缺乏 H3K27me1 和 H3K9me2，这是与拟南芥中异染色质相关的两个经典标记<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup></p>
+<p>为了将推定的增强子与任何启动子区分开来，排除了位于每个基因 TSS 上游 1.5 kb 内的所有 DHS。只有位于基因间区域（转录末端位点下游和 TSS 上游 &gt; 1.5 kb）的 DHS 被认为是推定的增强子。测量了从每个基因间 DHS 的中点到其侧翼基因的 TSS 的距离。只有距离 TSS 至少 1500 bp 的 DHS 被选为假定的增强子。对于每个预测的增强子，我们选择了一个在其 TSS 和增强子之间距离最短的基因。该基因被认为是增强子的“最近端基因”。使用从与 DNase-seq 中使用的相同发育阶段的拟南芥植物组织开发的 RNA-seq 数据集分析这些最近端基因的表达。</p>
+<p>我们鉴定了与 2529 个假定的花特异性增强子相关的 1651 个最近端基因（每百万映射读数中每千碱基转录本的片段 [FPKM] &gt; 1 在叶或花组织中）。这些基因在花组织中的表达水平（FPKM 的平均值，58.21；FPKM 的中位数，15.19）显着高于叶组织（FPKM 的平均值，54.13；FPKM 的中位数，10.78）（P 值 &lt; 8.8 × 10− 9、K-S 测试）。同样，我们确定了与 1644 个假定的叶特异性增强子相关的 1362 个最近端基因 (FPKM &gt; 1)。这些基因在叶组织中的表达水平（FPKM 的平均值，63.63；FPKM 的中位数，14.88）高于花组织（FPKM 的平均值，40.85；FPKM 的中位数，13.82）（P 值：0.0081，K-S 检验） .这些结果支持组织特异性增强子对近端基因的组织特异性表达的影响。</p>
+<h4 id="结果-2"><a class="markdownIt-Anchor" href="#结果-2"></a> 结果</h4>
+<p>这些结果支持组织特异性增强子对近端基因的组织特异性表达的影响。</p>
+<p>H3K27ac 与组织特异性增强剂子正相关</p>
+<p>H3K27me3 与组织特异性增强子呈负相关，表明 H3K27me3 可能是一个阻遏物（repressor mark）标记并与平衡增强子（poised enhancers）相关。</p>
+<img src="/img/enhancer_opne_chr_pre_vali/1.jpg" alt="1" style="zoom:25%;" />
+<h2 id="实验验证"><a class="markdownIt-Anchor" href="#实验验证"></a> 实验验证</h2>
+<p>开发了一个基于 GUS 的报告系统来验证假定的增强剂</p>
+<img src="/img/enhancer_opne_chr_pre_vali/3.png" alt="3" style="zoom:25%;" />
+<p>预测的增强子，范围从 384 到 806 bp，从拟南芥基因组 DNA 中扩增，并克隆到由最小 35S 启动子（-50 到 -2 bp）和 GUS 报告基因组成的报告载体中（Jefferson，1987）。然后将构建体转化到野生型拟南芥(Col-0)植物中并测定转基因植物的GUS表达。如果在转基因植物中始终观察到 GUS 表达，则预测的增强子将得到验证。</p>
+<p>总共选择了 14 个预测的基因间增强子进行验证，包括先前通过传统增强子捕获方法确定的三个昼夜节律调节的增强子<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>。这三个增强子中的每一个都与基因间 DHS 重叠，因此也被预测为我们数据集中的增强子。两个阳性和两个阴性报告结构也用于验证。两个阳性构建体包括来自 35S 启动子的已知增强子（-200 到 -39 bp）（Benfey 等人，1989），它被放置在报告构建体中的相反方向（-200 到 -39 bp 和 -39 到 - 200 bp 分别构建图 3E 中的 35sEn 和 35sEnR）。一个空载体，pKGWSF7.0，包含报告构建体的主干（Karimi 等人，2007）和一个只有最小 35S 启动子的构建体用作阴性对照。</p>
+<img src="/img/enhancer_opne_chr_pre_vali/2.jpg" alt="2" style="zoom:25%;" />
+<img src="/img/enhancer_opne_chr_pre_vali/4.png" alt="4" style="zoom:0.001%;" />
+<p>两种阳性构建体在不同组织中产生强烈的 GUS 信号。相反，这两种阴性构建体在一些转基因植物中产生了不一致和微弱的 GUS 信号。 14 个候选增强剂中有 10 个 (71%) 在不同组织中始终以不同的信号强度产生 GUS 信号。在各种组织/器官中检测到 GUS 信号，包括叶、茎、根 和花的不同部位。因此，这 10 个候选者被验证具有增强子功能。我们还随机选择了 10 个与 DHS 无关的基因间区域（N1 到 N10）。这些区域，范围从 293 到 713 bp，被克隆到报告载体中作为非增强子对照。源自这些非增强子构建体的转基因植物显示出与两种阴性对照构建体相似的 GUS 表达模式。</p>
+<h4 id="预测增强剂的组织特异性功能"><a class="markdownIt-Anchor" href="#预测增强剂的组织特异性功能"></a> 预测增强剂的组织特异性功能</h4>
+<p>三种花特异性增强子中的两种，F1 和 F2，在转基因植物的花中产生 GUS 信号。 F2 产生了不同的 GUS 信号，这些信号对附着在花药上的细丝尖端具有高度特异性。在其余转基因植物中未观察到明确的 GUS 信号。 F1 在花的萼片中产生特定的信号。有趣的是，F1 还在叶组织的各种细胞类型中产生信号。由于萼片是经过修饰的叶子，我们假设内源 F1 的萼片特异性受到额外的侧翼元素的调节。转基因 F1 失去了组织特异性，并在与萼片相关的其他器官中变得活跃。此外，F1 和 F2 都没有在根中产生信号。</p>
+<p>14 个预测的增强子中有 8 个与叶和花组织中的 DHS 相关（常见的增强子，C1 到 C8）。其中一些在叶和花组织中产生信号。然而，这些常见的增强子通常在转基因植物的一个特定组织中产生更一致和/或更强的 GUS 信号。例如，C4 在叶柄和花梗中产生一致的（12/12 转基因植物）和强烈的 GUS 信号，但在其他组织中产生更弱且频率更低的信号。</p>
+<p>三种增强剂 C8、L1 和 L2 在叶片中产生相对较弱的 GUS 信号。然而，在不同的转基因植物中始终观察到这些弱信号，这与从阴性对照构建体观察到的不一致的弱信号明显不同。因此，这些结果表明这三个 DNA 片段在叶组织中具有相对较低水平的增强剂活性。</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Zhu B, Zhang W, Zhang T, Liu B, Jiang J. Genome-Wide Prediction and Validation of Intergenic Enhancers in Arabidopsis Using Open Chromatin Signatures. Plant Cell. 2015 Sep;27(9):2415-26. doi: 10.1105/tpc.15.00537. Epub 2015 Sep 15. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Shen Y, Yue F, McCleary DF, Ye Z, Edsall L, Kuan S, Wagner U, Dixon J, Lee L, Lobanenkov VV, Ren B. A map of the cis-regulatory sequences in the mouse genome. Nature. 2012 Aug 2;488(7409):116-20. doi: 10.1038/nature11243. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Bulger M, Groudine M. Functional and mechanistic diversity of distal transcription enhancers. Cell. 2011 Feb 4;144(3):327-39. doi: 10.1016/j.cell.2011.01.024. Erratum in: Cell. 2011 Mar 4;144(5):825. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Jin C, Zang C, Wei G, Cui K, Peng W, Zhao K, Felsenfeld G. H3.3/H2A.Z double variant-containing nucleosomes mark ‘nucleosome-free regions’ of active promoters and other regulatory regions. Nat Genet. 2009 Aug;41(8):941-5. doi: 10.1038/ng.409. Epub 2009 Jul 26. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>Gross DS, Garrard WT. Nuclease hypersensitive sites in chromatin. Annu Rev Biochem. 1988;57:159-97. doi: 10.1146/annurev.bi.57.070188.001111 <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>Rada-Iglesias A, Bajpai R, Swigut T, Brugmann SA, Flynn RA, Wysocka J. A unique chromatin signature uncovers early developmental enhancers in humans. Nature. 2011 Feb 10;470(7333):279-83. doi: 10.1038/nature09692. Epub 2010 Dec 15. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Luo C, Sidote DJ, Zhang Y, Kerstetter RA, Michael TP, Lam E. Integrative analysis of chromatin states in Arabidopsis identified potential regulatory mechanisms for natural antisense transcript production. Plant J. 2013 Jan;73(1):77-90. doi: 10.1111/tpj.12017. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>Michael TP, McClung CR. Enhancer trapping reveals widespread circadian clock transcriptional control in Arabidopsis. Plant Physiol. 2003 Jun;132(2):629-39. doi: 10.1104/pp.021006. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://yuanzhen-lucas.github.io">Yuanzhen</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yuanzhen-lucas.github.io/2022/08/09/%E5%BC%80%E6%94%BE%E6%9F%93%E8%89%B2%E8%B4%A8%E9%A2%84%E6%B5%8B%E5%A2%9E%E5%BC%BA%E5%AD%90%E5%B9%B6%E9%AA%8C%E8%AF%81/">https://yuanzhen-lucas.github.io/2022/08/09/%E5%BC%80%E6%94%BE%E6%9F%93%E8%89%B2%E8%B4%A8%E9%A2%84%E6%B5%8B%E5%A2%9E%E5%BC%BA%E5%AD%90%E5%B9%B6%E9%AA%8C%E8%AF%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yuanzhen-lucas.github.io" target="_blank">袁仲之的生信之旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DNase-seq/">DNase-seq</a><a class="post-meta__tags" href="/tags/Open-Chromatin/">Open Chromatin</a><a class="post-meta__tags" href="/tags/enhancer/">enhancer</a></div><div class="post_share"><div class="social-share" data-image="/img/index.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/08/09/Advanced-R-2th-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"><img class="prev-cover" src="/img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Advanced R 2th 学习笔记（一）</div></div></a></div><div class="next-post pull-right"><a href="/2022/08/06/TF-database-summary-Arabidopsis/"><img class="next-cover" src="/img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">TF database summary(Arabidopsis)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/01/%E6%A4%8D%E7%89%A9%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%93%E8%89%B2%E8%B4%A8%E5%BC%80%E6%94%BE%E6%80%A7/" title="植物基因组中的染色质开放性"><img class="cover" src="/img/index.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-01</div><div class="title">植物基因组中的染色质开放性</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yuanzhen</div><div class="author-info__description">My thoughts of study or love</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yuanzhen-lucas"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yuanzhen-lucas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2339325066@qq.com.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">输出push输入</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text"> 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">2.</span> <span class="toc-text"> 背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">3.</span> <span class="toc-text"> 结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E4%BD%8D%E4%BA%8E%E5%9F%BA%E5%9B%A0%E9%97%B4%E5%8C%BA%E5%9F%9F%E7%9A%84-dhs-%E7%9A%84%E5%A2%9E%E5%BC%BA%E5%AD%90%E9%A2%84%E6%B5%8B"><span class="toc-number">3.1.</span> <span class="toc-text"> 基于位于基因间区域的 DHS 的增强子预测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C-2"><span class="toc-number">3.1.2.</span> <span class="toc-text"> 结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text"> 实验验证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E5%A2%9E%E5%BC%BA%E5%89%82%E7%9A%84%E7%BB%84%E7%BB%87%E7%89%B9%E5%BC%82%E6%80%A7%E5%8A%9F%E8%83%BD"><span class="toc-number">4.0.1.</span> <span class="toc-text"> 预测增强剂的组织特异性功能</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/09/Advanced-R-2th-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="Advanced R 2th 学习笔记（一）"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Advanced R 2th 学习笔记（一）"/></a><div class="content"><a class="title" href="/2022/08/09/Advanced-R-2th-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="Advanced R 2th 学习笔记（一）">Advanced R 2th 学习笔记（一）</a><time datetime="2022-08-09T11:21:24.000Z" title="发表于 2022-08-09 19:21:24">2022-08-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/09/%E5%BC%80%E6%94%BE%E6%9F%93%E8%89%B2%E8%B4%A8%E9%A2%84%E6%B5%8B%E5%A2%9E%E5%BC%BA%E5%AD%90%E5%B9%B6%E9%AA%8C%E8%AF%81/" title="开放染色质预测增强子并验证"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="开放染色质预测增强子并验证"/></a><div class="content"><a class="title" href="/2022/08/09/%E5%BC%80%E6%94%BE%E6%9F%93%E8%89%B2%E8%B4%A8%E9%A2%84%E6%B5%8B%E5%A2%9E%E5%BC%BA%E5%AD%90%E5%B9%B6%E9%AA%8C%E8%AF%81/" title="开放染色质预测增强子并验证">开放染色质预测增强子并验证</a><time datetime="2022-08-09T02:03:52.000Z" title="发表于 2022-08-09 10:03:52">2022-08-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/06/TF-database-summary-Arabidopsis/" title="TF database summary(Arabidopsis)"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TF database summary(Arabidopsis)"/></a><div class="content"><a class="title" href="/2022/08/06/TF-database-summary-Arabidopsis/" title="TF database summary(Arabidopsis)">TF database summary(Arabidopsis)</a><time datetime="2022-08-06T03:13:53.000Z" title="发表于 2022-08-06 11:13:53">2022-08-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/01/%E6%A4%8D%E7%89%A9%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%93%E8%89%B2%E8%B4%A8%E5%BC%80%E6%94%BE%E6%80%A7/" title="植物基因组中的染色质开放性"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="植物基因组中的染色质开放性"/></a><div class="content"><a class="title" href="/2022/08/01/%E6%A4%8D%E7%89%A9%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%93%E8%89%B2%E8%B4%A8%E5%BC%80%E6%94%BE%E6%80%A7/" title="植物基因组中的染色质开放性">植物基因组中的染色质开放性</a><time datetime="2022-08-01T06:42:52.000Z" title="发表于 2022-08-01 14:42:52">2022-08-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/31/We-fell-in-love/" title="We fell in love"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="We fell in love"/></a><div class="content"><a class="title" href="/2022/07/31/We-fell-in-love/" title="We fell in love">We fell in love</a><time datetime="2022-07-31T13:20:13.000Z" title="发表于 2022-07-31 21:20:13">2022-07-31</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Yuanzhen</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
