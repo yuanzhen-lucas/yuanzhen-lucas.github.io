@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>R学习的进程 | 袁仲之的生信之旅</title><meta name="keywords" content="R"><meta name="author" content="Yuanzhen"><meta name="copyright" content="Yuanzhen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="R学习进程建议  初学者 没有一个起点适合所有初学者，但这里有 6 种开始学习 R 的方法。  像 tidyverse 一样安装、RStudio 和 R 包 ​       这三个安装步骤常常让初次使用的用户感到困惑。对于初学者友好的安装说明，推荐免费的在线 ModernDive 章节 R 和 RStudio 入门。您还可以享受 R-Ladies Sydney 的 Basic Basics 课程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R学习的进程">
+<meta property="og:url" content="https://yuanzhen-lucas.github.io/2022/08/15/R%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%BF%9B%E7%A8%8B/index.html">
+<meta property="og:site_name" content="袁仲之的生信之旅">
+<meta property="og:description" content="R学习进程建议  初学者 没有一个起点适合所有初学者，但这里有 6 种开始学习 R 的方法。  像 tidyverse 一样安装、RStudio 和 R 包 ​       这三个安装步骤常常让初次使用的用户感到困惑。对于初学者友好的安装说明，推荐免费的在线 ModernDive 章节 R 和 RStudio 入门。您还可以享受 R-Ladies Sydney 的 Basic Basics 课程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yuanzhen-lucas.github.io/img/index.jpg">
+<meta property="article:published_time" content="2022-08-15T06:29:22.000Z">
+<meta property="article:modified_time" content="2022-08-15T07:34:56.191Z">
+<meta property="article:author" content="Yuanzhen">
+<meta property="article:tag" content="R">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuanzhen-lucas.github.io/img/index.jpg"><link rel="shortcut icon" href="https://img.shields.io/badge/-%E8%A2%81-orange"><link rel="canonical" href="https://yuanzhen-lucas.github.io/2022/08/15/R%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%BF%9B%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'R学习的进程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-15 15:34:56'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">袁仲之的生信之旅</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">R学习的进程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-15T06:29:22.000Z" title="发表于 2022-08-15 14:29:22">2022-08-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-15T07:34:56.191Z" title="更新于 2022-08-15 15:34:56">2022-08-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/R/">R</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="R学习的进程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="r学习进程建议"><a class="markdownIt-Anchor" href="#r学习进程建议"></a> R学习进程建议</h1>
+<h2 id="初学者"><a class="markdownIt-Anchor" href="#初学者"></a> 初学者</h2>
+<p>没有一个起点适合所有初学者，但这里有 6 种开始学习 R 的方法。</p>
+<h3 id="像-tidyverse-一样安装-rstudio-和-r-包"><a class="markdownIt-Anchor" href="#像-tidyverse-一样安装-rstudio-和-r-包"></a> 像 tidyverse 一样安装、RStudio 和 R 包</h3>
+<p>​       这三个安装步骤常常让初次使用的用户感到困惑。对于初学者友好的安装说明，推荐免费的在线 ModernDive 章节 <a target="_blank" rel="noopener" href="https://moderndive.netlify.app/1-getting-started.html">R 和 RStudio 入门</a>。您还可以享受 <a target="_blank" rel="noopener" href="https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/">R-Ladies Sydney 的 Basic Basics 课程</a>,该课程为新用户提供了 RStudio 的导览，以及安装和使用 R 包的分步指南。</p>
+<h3 id="花一个小时阅读-r-中整洁统计的简单介绍"><a class="markdownIt-Anchor" href="#花一个小时阅读-r-中整洁统计的简单介绍"></a> 花一个小时阅读 R 中整洁统计的简单介绍。</h3>
+<p>​       如果您是从传统的点击式统计软件包（如 SPSS 或 SAS）开始使用 R，RStudio 的 Thomas Mock 创建了一个免费的视频网络研讨会，标题为 <a target="_blank" rel="noopener" href="https://www.rstudio.com/resources/webinars/a-gentle-introduction-to-tidy-statistics-in-r/">A Gentle Introduction to Tidy R</a> 中的统计。这个一小时的介绍涵盖了如何快速开始使用 R 中的研究统计的基础知识，强调将数据读入 R，使用 tidyverse 进行探索性数据分析，使用 ANOVA 进行统计测试，最后使用ggplot2 做图。此外，您还可以通过该页面左侧的主题菜单找到许多其他 RStudio 网络研讨会和视频以进行探索。</p>
+<h3 id="阅读-r-了解数据科学"><a class="markdownIt-Anchor" href="#阅读-r-了解数据科学"></a> 阅读 R 了解数据科学。</h3>
+<p>​       虽然视频对某些人来说很棒，但我们中的其他人通过蜷缩看一本好书来学习最好。如果这描述了您，请从您友好的当地书商那里获取 Wickham 和 Grolemund (2016) 的 R For Data Science 的副本。<a target="_blank" rel="noopener" href="https://r4ds.had.co.nz/">R For Data Science</a> 提供纸质和免费电子形式，并已翻译成多种语言。 如果您对 R 的了解还不够，无法投身于 R for Data Science，您可能会发现 Garrett Grolemund 的 <a target="_blank" rel="noopener" href="https://rstudio-education.github.io/hopr/">Hands On Programming with R (2014)</a> 是一种更快的入门方式。它还提供纸质版、电子版和免费在线版本。</p>
+<h3 id="使用-rstudiocloud-primers-开始编码"><a class="markdownIt-Anchor" href="#使用-rstudiocloud-primers-开始编码"></a> 使用 RStudio.cloud Primers 开始编码。</h3>
+<p>​     <code>开始学习 R 的最有效方法之一就是开始使用它</code>。 <a target="_blank" rel="noopener" href="https://rstudio.cloud/learn/primers">RStudio.cloud Primers</a> 提供了一个基于云的学习环境，可以通过舒适的浏览器向您传授 R 的基础知识。 RStudio.cloud 不需要您在计算机上安装任何软件，让您可以轻松地用 R 轻松涉足数据科学领域。最重要的是，rstudio.cloud 帐户可免费供个人使用。</p>
+<h3 id="使用-r-markdown-发布您的作品"><a class="markdownIt-Anchor" href="#使用-r-markdown-发布您的作品"></a> 使用 R Markdown 发布您的作品。</h3>
+<p>​       R 是用图形和数据讲故事的绝佳工具，但有时也需要文字。 R Markdown 将叙述性文本和代码编织在一起，以生成格式优雅的报告、论文、书籍、幻灯片等。 Garrett Grolemund 将通过他的<a target="_blank" rel="noopener" href="https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/">R Markdown 入门视频</a>为您提供个人 R Markdown 之旅，或者您可以在 <a target="_blank" rel="noopener" href="https://rmarkdown.rstudio.com/">rmarkdown.rstudio.com</a> 上选择自己的路径来探索 R Markdown 的奇迹。<a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide (2018) </a>它很好地概述了 R Markdown 系列软件包中的可能性。</p>
+<h3 id="了解一些用于开发的有效工具"><a class="markdownIt-Anchor" href="#了解一些用于开发的有效工具"></a> 了解一些用于开发的有效工具。</h3>
+<p>​       RStudio 提供了 6 个视频，称为<a target="_blank" rel="noopener" href="https://www.rstudio.com/resources/webinars/">RStudio Essentials 系列</a>，可帮助您学习如何使用 RStudio 的工具（包括 RStudio 集成开发环境 (IDE)）对 R 项目进行编程和管理。这些视频还将帮助您学习良好的开发实践，使团队内的协作安全而轻松。</p>
+<h2 id="中阶学习者"><a class="markdownIt-Anchor" href="#中阶学习者"></a> 中阶学习者</h2>
+<p>一旦你开始学习 R，你可以通过探索 R 的许多专业能力来扩展你的技能。这里有 6 个最常见的领域，已经有一些 R 经验的人觉得学习这些特别有益。</p>
+<h3 id="拿一些备忘单cheat-sheets"><a class="markdownIt-Anchor" href="#拿一些备忘单cheat-sheets"></a> 拿一些备忘单（cheat sheets）。</h3>
+<p>​      没有人能记住每个 R 包的所有函数和参数，这就是发明备忘单的原因。 RStudio 为最流行的 R 功能和包发布了<a target="_blank" rel="noopener" href="https://www.rstudio.com/resources/cheatsheets/">免费的备忘单集合</a>，以帮助记忆。如果你决定要收集它们，你可以克隆备忘单 <a target="_blank" rel="noopener" href="https://www.rstudio.com/resources/cheatsheets/">github 存储库</a>。</p>
+<h3 id="学会寻求帮助"><a class="markdownIt-Anchor" href="#学会寻求帮助"></a> 学会寻求帮助。</h3>
+<p>​       每个人都会被卡住。学习在哪里以及如何寻求 R 帮助是一项需要磨练的强大技能。 Tidyverse 网站提供了一些关于如何<a target="_blank" rel="noopener" href="https://www.tidyverse.org/help/">寻求帮助您的专家性建议</a>。你会喜欢的一个包是 reprex 包，用于创建可重现的 R 代码示例。通读<a target="_blank" rel="noopener" href="https://reprex.tidyverse.org/">reprex</a>文章，其中包含大量动画 gif 以说明诸如<a target="_blank" rel="noopener" href="https://reprex.tidyverse.org/articles/magic-reprex.html">Magic reprex</a> 和 <a target="_blank" rel="noopener" href="https://reprex.tidyverse.org/articles/datapasta-reprex.html">Using datapasta with reprex</a>之类的步骤。在哪里寻求帮助？<a target="_blank" rel="noopener" href="https://community.rstudio.com/">RStudio 社区</a>是一个热情好客的在线讨论论坛，可以询问（并回答！）有关使用 R 的任何问题。</p>
+<h3 id="改善您的可视化"><a class="markdownIt-Anchor" href="#改善您的可视化"></a> 改善您的可视化。</h3>
+<p>​       您可能已经知道如何使用 ggplot2 创建一个基本图形，您可以通过阅读 Hadley Wickham (2016) 的书 ggplot2：用于数据分析的优雅图形来扩展您对图形语法和 ggplot2 的知识。第三版正在进行中，可以<a target="_blank" rel="noopener" href="https://ggplot2-book.org/">在线免费查看</a>，源文件在<a target="_blank" rel="noopener" href="https://github.com/hadley/ggplot2-book">GitHub</a> 上。建议也将 Winston Chang (2018) 更新的 <a target="_blank" rel="noopener" href="https://r-graphics.org/">R Graphics Cookbook</a>加入书签，它解决特定 ggplot2 问题。</p>
+<h3 id="使用-htmlwidgets-和-shiny-开发交互式应用程序"><a class="markdownIt-Anchor" href="#使用-htmlwidgets-和-shiny-开发交互式应用程序"></a> 使用 htmlwidgets 和 Shiny 开发交互式应用程序。</h3>
+<p>​       更好地传达您的分析的一种具体方法是使您的可视化具有交互性。您可以在 <a target="_blank" rel="noopener" href="https://www.htmlwidgets.org/">www.htmlwidgets.org</a>上学习如何通过几行代码将基于浏览器的交互性添加到您的图形中。如果您的交互需求需要运行R代码，那么就需要在服务器上运行，请在 <a target="_blank" rel="noopener" href="https://shiny.rstudio.com/">shiny.rstudio.com</a> 学习如何编写 Shiny 应用程序，或者跟随 Wickham (2020) 编写新的 <a target="_blank" rel="noopener" href="https://mastering-shiny.org/">Mastering Shiny</a>书。这两种方法都可以与 R Markdown 集成，以使用<a target="_blank" rel="noopener" href="https://pkgs.rstudio.com/flexdashboard/">flexdashboard 包</a>创建精美的交互式仪表板。</p>
+<h3 id="使用-tidymodels-简化您的模型探索"><a class="markdownIt-Anchor" href="#使用-tidymodels-简化您的模型探索"></a> 使用 tidymodels 简化您的模型探索。</h3>
+<p>​       大部分数据科学都涉及建模，但每个建模包似乎都发明了自己的接口和参数。输入 tidymodels，这是一个用于建模和分析的元包，它共享 tidyverse 的底层设计理念、语法和数据结构。如果您以前使用过插入符号作为统一的建模界面，那么 tidymodels 包 parsnip 是它更新的子项。虽然该项目仍在开发中，但它有望显着简化模型探索。 RStudio 的 Edgar Ruiz 撰写了 <a target="_blank" rel="noopener" href="https://rviews.rstudio.com/2019/06/19/a-gentle-intro-to-tidymodels/">tidymodels 的简要介绍</a>来帮助您入门。</p>
+<h3 id="探索其他专业包"><a class="markdownIt-Anchor" href="#探索其他专业包"></a> 探索其他专业包。</h3>
+<p>​    R 吸引了数据科学家，因为它有 13,000 多个包，几乎可以解决所有用例。如果你对基因组学感兴趣，你会想花一些时间<a target="_blank" rel="noopener" href="https://bioconductor.org/">Bioconductor的包装集合</a>。如果您在 Spark 集群上使用大数据，请查看 <a target="_blank" rel="noopener" href="https://sparklyr.rstudio.com/">sparklyr</a>。如果你想涉足金融，你可能会想从<a target="_blank" rel="noopener" href="http://www.quantmod.com/">quantmod</a>开始。要了解您应该探索哪些包，我们推荐一些基于主题的包目录，例如 <a target="_blank" rel="noopener" href="https://awesome-r.com/">Awesome R</a>或 <a target="_blank" rel="noopener" href="https://cran.r-project.org/web/views/">CRAN </a>任务视图。</p>
+<h2 id="高阶学习者"><a class="markdownIt-Anchor" href="#高阶学习者"></a> 高阶学习者</h2>
+<p>即使您是 R 代码开发方面的专家，深入学习一些议题既可以帮助您开发更好的代码，也可以更有效地与他人分享。</p>
+<h3 id="深入了解-r-的基础"><a class="markdownIt-Anchor" href="#深入了解-r-的基础"></a> 深入了解 R 的基础。</h3>
+<p>大多数 R 用户不是程序员，因此他们的大部分 R 代码没有应有的可读性、快速或高效。 Hadley Wickham 的书 <a target="_blank" rel="noopener" href="https://adv-r.hadley.nz/">Advanced R (2019) 的第二版</a>解开 R 工作方式背后的许多秘密，并为您提供解决问题的新策略。您可能还想收藏<a target="_blank" rel="noopener" href="https://advanced-r-solutions.rbind.io/">Advanced R Solutions</a>，它为本书中的练习提供了有效的解决方案。</p>
+<h3 id="了解如何扩展-r"><a class="markdownIt-Anchor" href="#了解如何扩展-r"></a> 了解如何扩展 R</h3>
+<p>虽然它的内容有时与 Hadley 的 Advanced R 重叠，但 R 核心团队在 CRAN 上提供了<a target="_blank" rel="noopener" href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html">编写 R 扩展</a>。如果您希望将自己的 C 和 C++ 例程添加到 R 中，这本书特别有用，而且还包含在其他任何地方都很难找到的关于调试、R API 和运行时分析的独特信息。</p>
+<h3 id="构建自己的包"><a class="markdownIt-Anchor" href="#构建自己的包"></a> 构建自己的包。</h3>
+<p>R 包允许您以模块化且易于集成的方式与其他 R 程序员共享您的函数。上面提到的 Writing R Extensions 记录了如何编写包，但是您可能会发现 Hadley Wickham 的<a href="ttps://r-pkgs.org">R Packages book </a>更容易阅读.如果您希望您的 R 代码能够覆盖尽可能广泛的开发人员群体，您将想知道如何构建包。</p>
+<h3 id="在您的分析中使用-python"><a class="markdownIt-Anchor" href="#在您的分析中使用-python"></a> 在您的分析中使用 Python。</h3>
+<p>任何坚持你必须在 R 和 Python 之间进行选择来进行数据科学的人都是在创造一个<code>错误的选择</code>。 R 提供了一种将 Python 代码合并到 <a target="_blank" rel="noopener" href="https://rstudio.github.io/reticulate/">reticulate 包</a>中的简单方法。 Sean Lopp 的网络研讨会<a target="_blank" rel="noopener" href="https://www.rstudio.com/resources/webinars/r-python-a-data-science-love-story/">R、RStudio 1.2 和 Python——一个爱情故事</a>，展示了开发人员如何轻松地将 Python 代码集成到他们的 R 工作流程中，并逐步完成了网状 Shiny 应用程序的开发。</p>
+<h3 id="在-tensorflow-上尝试深度学习"><a class="markdownIt-Anchor" href="#在-tensorflow-上尝试深度学习"></a> 在 TensorFlow 上尝试深度学习。</h3>
+<p>RStudio 在 <a target="_blank" rel="noopener" href="https://tensorflow.rstudio.com/">tensorflow.rstudio.com </a>上托管了一个专门用于 R 和 Tensorflow 的网站，您可以在其中学习如何在分析中使用深度学习。 J.J. Allaire 和 Francois Chollet 出版了一本使用<a target="_blank" rel="noopener" href="https://www.amazon.com/Deep-Learning-R-Francois-Chollet/dp/161729554X">R 进行深度学习</a>的书。你可以听到 J.J.在他的 rstudio::conf 2019 视频中描述系统背后的理念。有关如何在 R 中开始深度学习的资源的快速概览，请阅读<a target="_blank" rel="noopener" href="https://www.rstudio.com/blog/getting-started-with-deep-learning-in-r/">Sigrid Keydana 的文章</a>并订阅 <a target="_blank" rel="noopener" href="https://blogs.rstudio.com/ai/">Tensorflow for R 博客</a>。</p>
+<h3 id="用r-markdown-进行交流"><a class="markdownIt-Anchor" href="#用r-markdown-进行交流"></a> 用R Markdown 进行交流。</h3>
+<p>R Markdown 系列软件包使您能够创建和共享精美的数据科学产品，例如书籍、博客、网站和演示文稿。试用 <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/bookdown/">bookdown</a>、<a target="_blank" rel="noopener" href="https://rstudio.github.io/distill/">distill</a> 和 <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/blogdown/">blogdown</a> 等软件包；每个都扩展了 R Markdown 以帮助您发布精美的网站以共享您的工作。如果您想展示使用 R 代码进行的分析或可视化，请考虑使用 <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/xaringan.html">xaringan</a> 包使用 R Markdown 制作幻灯片。如果你已经构建了一个 R 包，那么<a target="_blank" rel="noopener" href="https://pkgdown.r-lib.org/">pkgdown</a> 包可以让你快速、相对轻松地为你的包构建一个网站，使用你已经完成的所有工作来编写和记录你的函数。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://yuanzhen-lucas.github.io">Yuanzhen</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yuanzhen-lucas.github.io/2022/08/15/R%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%BF%9B%E7%A8%8B/">https://yuanzhen-lucas.github.io/2022/08/15/R%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%BF%9B%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yuanzhen-lucas.github.io" target="_blank">袁仲之的生信之旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/R/">R</a></div><div class="post_share"><div class="social-share" data-image="/img/index.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/08/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/"><img class="next-cover" src="/img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">机器学习之基础篇</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/10/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%85%83%E7%BC%96%E7%A8%8B/" title="R学习笔记之元编程"><img class="cover" src="/img/index.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-10</div><div class="title">R学习笔记之元编程</div></div></a></div><div><a href="/2022/08/10/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" title="R学习笔记之函数式编程语言"><img class="cover" src="/img/index.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-10</div><div class="title">R学习笔记之函数式编程语言</div></div></a></div><div><a href="/2022/08/09/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/" title="R学习笔记之基础篇"><img class="cover" src="/img/index.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-09</div><div class="title">R学习笔记之基础篇</div></div></a></div><div><a href="/2022/08/10/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" title="R学习笔记之面向对象编程"><img class="cover" src="/img/index.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-10</div><div class="title">R学习笔记之面向对象编程</div></div></a></div><div><a href="/2022/08/10/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%80%9A%E7%94%A8%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/" title="R学习笔记之通用编程技术"><img class="cover" src="/img/index.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-10</div><div class="title">R学习笔记之通用编程技术</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yuanzhen</div><div class="author-info__description">My thoughts of study or love</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yuanzhen-lucas"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yuanzhen-lucas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2339325066@qq.com.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">输出push输入</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#r%E5%AD%A6%E4%B9%A0%E8%BF%9B%E7%A8%8B%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text"> R学习进程建议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%AD%A6%E8%80%85"><span class="toc-number">1.1.</span> <span class="toc-text"> 初学者</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%83%8F-tidyverse-%E4%B8%80%E6%A0%B7%E5%AE%89%E8%A3%85-rstudio-%E5%92%8C-r-%E5%8C%85"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 像 tidyverse 一样安装、RStudio 和 R 包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%B1%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%97%B6%E9%98%85%E8%AF%BB-r-%E4%B8%AD%E6%95%B4%E6%B4%81%E7%BB%9F%E8%AE%A1%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 花一个小时阅读 R 中整洁统计的简单介绍。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%85%E8%AF%BB-r-%E4%BA%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 阅读 R 了解数据科学。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-rstudiocloud-primers-%E5%BC%80%E5%A7%8B%E7%BC%96%E7%A0%81"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 使用 RStudio.cloud Primers 开始编码。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-r-markdown-%E5%8F%91%E5%B8%83%E6%82%A8%E7%9A%84%E4%BD%9C%E5%93%81"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 使用 R Markdown 发布您的作品。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9B%E7%94%A8%E4%BA%8E%E5%BC%80%E5%8F%91%E7%9A%84%E6%9C%89%E6%95%88%E5%B7%A5%E5%85%B7"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 了解一些用于开发的有效工具。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E9%98%B6%E5%AD%A6%E4%B9%A0%E8%80%85"><span class="toc-number">1.2.</span> <span class="toc-text"> 中阶学习者</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%BF%E4%B8%80%E4%BA%9B%E5%A4%87%E5%BF%98%E5%8D%95cheat-sheets"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 拿一些备忘单（cheat sheets）。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%BC%9A%E5%AF%BB%E6%B1%82%E5%B8%AE%E5%8A%A9"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 学会寻求帮助。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E5%96%84%E6%82%A8%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 改善您的可视化。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-htmlwidgets-%E5%92%8C-shiny-%E5%BC%80%E5%8F%91%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 使用 htmlwidgets 和 Shiny 开发交互式应用程序。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-tidymodels-%E7%AE%80%E5%8C%96%E6%82%A8%E7%9A%84%E6%A8%A1%E5%9E%8B%E6%8E%A2%E7%B4%A2"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 使用 tidymodels 简化您的模型探索。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A2%E7%B4%A2%E5%85%B6%E4%BB%96%E4%B8%93%E4%B8%9A%E5%8C%85"><span class="toc-number">1.2.6.</span> <span class="toc-text"> 探索其他专业包。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E9%98%B6%E5%AD%A6%E4%B9%A0%E8%80%85"><span class="toc-number">1.3.</span> <span class="toc-text"> 高阶学习者</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3-r-%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 深入了解 R 的基础。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%A6%82%E4%BD%95%E6%89%A9%E5%B1%95-r"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 了解如何扩展 R</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8C%85"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 构建自己的包。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%82%A8%E7%9A%84%E5%88%86%E6%9E%90%E4%B8%AD%E4%BD%BF%E7%94%A8-python"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 在您的分析中使用 Python。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-tensorflow-%E4%B8%8A%E5%B0%9D%E8%AF%95%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 在 TensorFlow 上尝试深度学习。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8r-markdown-%E8%BF%9B%E8%A1%8C%E4%BA%A4%E6%B5%81"><span class="toc-number">1.3.6.</span> <span class="toc-text"> 用R Markdown 进行交流。</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/15/R%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%BF%9B%E7%A8%8B/" title="R学习的进程"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="R学习的进程"/></a><div class="content"><a class="title" href="/2022/08/15/R%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%BF%9B%E7%A8%8B/" title="R学习的进程">R学习的进程</a><time datetime="2022-08-15T06:29:22.000Z" title="发表于 2022-08-15 14:29:22">2022-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/" title="机器学习之基础篇"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习之基础篇"/></a><div class="content"><a class="title" href="/2022/08/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/" title="机器学习之基础篇">机器学习之基础篇</a><time datetime="2022-08-14T07:31:46.000Z" title="发表于 2022-08-14 15:31:46">2022-08-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/14/%E7%A0%94%E7%A9%B6%E7%94%9F%E6%89%80%E6%80%9D%E5%85%B6%E4%B8%80/" title="研究生所思其一"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="研究生所思其一"/></a><div class="content"><a class="title" href="/2022/08/14/%E7%A0%94%E7%A9%B6%E7%94%9F%E6%89%80%E6%80%9D%E5%85%B6%E4%B8%80/" title="研究生所思其一">研究生所思其一</a><time datetime="2022-08-14T05:20:40.000Z" title="发表于 2022-08-14 13:20:40">2022-08-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/11/%E8%B7%9F%E7%9D%80%E6%96%87%E7%8C%AE%E5%AD%A6%E7%BB%84%E5%AD%A6%E4%B9%8BATAC-seq/" title="跟着文献学组学之ATAC-seq"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跟着文献学组学之ATAC-seq"/></a><div class="content"><a class="title" href="/2022/08/11/%E8%B7%9F%E7%9D%80%E6%96%87%E7%8C%AE%E5%AD%A6%E7%BB%84%E5%AD%A6%E4%B9%8BATAC-seq/" title="跟着文献学组学之ATAC-seq">跟着文献学组学之ATAC-seq</a><time datetime="2022-08-11T03:03:28.000Z" title="发表于 2022-08-11 11:03:28">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/11/%E8%B7%9F%E7%9D%80%E6%96%87%E7%8C%AE%E5%AD%A6%E7%BB%84%E5%AD%A6%E4%B9%8BMNase-seq/" title="跟着文献学组学之MNase-seq"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跟着文献学组学之MNase-seq"/></a><div class="content"><a class="title" href="/2022/08/11/%E8%B7%9F%E7%9D%80%E6%96%87%E7%8C%AE%E5%AD%A6%E7%BB%84%E5%AD%A6%E4%B9%8BMNase-seq/" title="跟着文献学组学之MNase-seq">跟着文献学组学之MNase-seq</a><time datetime="2022-08-11T03:03:08.000Z" title="发表于 2022-08-11 11:03:08">2022-08-11</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Yuanzhen</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
