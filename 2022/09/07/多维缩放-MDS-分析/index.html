@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>多维缩放(MDS)分析 | 袁仲之的生信之旅</title><meta name="keywords" content="机器学习,Multidimensional Scaling"><meta name="author" content="Yuanzhen"><meta name="copyright" content="Yuanzhen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基本知识 多维缩放(multidimensional scaling, MDS)是在低维空间去展示高维多元数据的一种可视化方法 该方法看起来类似于利用主成分得分作图，或者对两个线性判别量的得分作图，但是不同的是，多维尺度变换的基本目标是将原始数据“拟合”到一个低维坐标系中，使得由降维所引起的任何变形最小。 多维尺度变换涉及到的问题可以描述为：当n个项目中各对项目之间的相似性(或距离)给定时，求这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多维缩放(MDS)分析">
+<meta property="og:url" content="https://yuanzhen-lucas.github.io/2022/09/07/%E5%A4%9A%E7%BB%B4%E7%BC%A9%E6%94%BE-MDS-%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="袁仲之的生信之旅">
+<meta property="og:description" content="基本知识 多维缩放(multidimensional scaling, MDS)是在低维空间去展示高维多元数据的一种可视化方法 该方法看起来类似于利用主成分得分作图，或者对两个线性判别量的得分作图，但是不同的是，多维尺度变换的基本目标是将原始数据“拟合”到一个低维坐标系中，使得由降维所引起的任何变形最小。 多维尺度变换涉及到的问题可以描述为：当n个项目中各对项目之间的相似性(或距离)给定时，求这">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yuanzhen-lucas.github.io/img/index.jpg">
+<meta property="article:published_time" content="2022-09-07T06:33:24.000Z">
+<meta property="article:modified_time" content="2022-09-08T09:04:11.179Z">
+<meta property="article:author" content="Yuanzhen">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="Multidimensional Scaling">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuanzhen-lucas.github.io/img/index.jpg"><link rel="shortcut icon" href="https://img.shields.io/badge/-%E8%A2%81-orange"><link rel="canonical" href="https://yuanzhen-lucas.github.io/2022/09/07/%E5%A4%9A%E7%BB%B4%E7%BC%A9%E6%94%BE-MDS-%E5%88%86%E6%9E%90/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '多维缩放(MDS)分析',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-08 17:04:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">袁仲之的生信之旅</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">多维缩放(MDS)分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-07T06:33:24.000Z" title="发表于 2022-09-07 14:33:24">2022-09-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-08T09:04:11.179Z" title="更新于 2022-09-08 17:04:11">2022-09-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="多维缩放(MDS)分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="基本知识"><a class="markdownIt-Anchor" href="#基本知识"></a> 基本知识</h3>
+<p>多维缩放(multidimensional scaling, MDS)是在低维空间去展示高维多<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%85%83%E6%95%B0%E6%8D%AE&amp;spm=1001.2101.3001.7020">元数据</a>的一种可视化方法</p>
+<p>该方法看起来类似于利用主成分得分作图，或者对两个线性判别量的得分作图，但是不同的是，多维尺度变换的基本目标是将原始数据“拟合”到一个低维坐标系中，使得由降维所引起的任何变形最小。</p>
+<p>多维尺度变换涉及到的问题可以描述为：当<em>n</em>个项目中各对项目之间的相似性(或距离)给定时，求这些项目在低维空间的表示，并使得项目间的接近程度与原先的相似性(或距离) “大体匹配”。</p>
+<p>根据样本是否可以计量，多维尺度变换可分为<code>度量型多维尺度变换(metric MDS)</code>和<code>非度量型多维尺度变换(non-metric MDS)</code>。在可计量的多维尺度变换中，依据度量的距离标准是否是欧氏距离，分为<code>经典多维尺度变换(classical MDS)</code>和<code>非经典多维尺度变换(non-classical MDS)</code>。</p>
+<p>Meyer 和 Buchta（2007 年)给出了 R 中众多邻近度量的实施<a href="hhttps://cran.r-project.org/web/packages/proxy/index.html">(R Core Team 2015)</a>。 MDS 的典型应用领域包括社会和行为科学、市场营销、生物识别和生态学等。对于 MDS 的介绍性阅读，请参阅Kruskal 和 Wish (1978)<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，更高级的主题可以在 Borg 和 Groenen (2005) 以及 Cox 和 Cox (2001) <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>中找到</p>
+<h4 id="度量型多维尺度变换"><a class="markdownIt-Anchor" href="#度量型多维尺度变换"></a> 度量型多维尺度变换</h4>
+<h5 id="经典多维尺度变换"><a class="markdownIt-Anchor" href="#经典多维尺度变换"></a> 经典多维尺度变换</h5>
+<p>多维尺度变换就是从经典多维尺度变换这个问题开始的。这个问题起源于当我们仅能获取到物体之间的距离的时候，如何由此去重构它的欧几里得坐标(Torgerson, W.S. 1958. Theory &amp; Methods of Scaling. New York: Wiley)。譬如，在以前，对一个国家的许多城市而言，并不能确定各个城市的经纬度信息，却知道所有城市之间的两两距离。</p>
+<h5 id="非经典多维尺度变换"><a class="markdownIt-Anchor" href="#非经典多维尺度变换"></a> 非经典多维尺度变换</h5>
+<p>当矩阵<strong>D</strong>不是欧氏距离矩阵，或者只是一般的相似性矩阵时，不满足经典多维度变化假设，此时不存在解析解，需要采用优化算法求解。</p>
+<h4 id="非度量型多维尺度变换"><a class="markdownIt-Anchor" href="#非度量型多维尺度变换"></a> 非度量型多维尺度变换</h4>
+<p>上面的度量多维尺度变换根据差异(或距离)矩阵创建了一系列点，使得这些点的距离矩阵与原始距离矩阵近似，这个要求有时是比较严格的，因为有些差异是不易量化的。非度量多维尺度变换就是为了放松这一要求。与前面近似距离矩阵不同，非度量多维尺度变换是近似一个非线性但单调的变换，只用距离矩阵D的顺序信息而不用其数值。它只是试图保存差异性的次序。因此，在不同的尺度可能有距离的压缩或展开。</p>
+<h4 id="两种多维尺度变换的比较"><a class="markdownIt-Anchor" href="#两种多维尺度变换的比较"></a> 两种多维尺度变换的比较</h4>
+<p>对于Metric MDS，这个方法以样本间相似度作为实际输入，需要样本是等距（interval）比例（ratio）尺度，优点是精确，可以根据多个准则评估样本间差异，缺点是计算成本高，耗时。对于很多应用问题，样本不费可计量，需要使用NonMetric MDS，这种方法接受样本的顺序尺度作为输入，并以此自动计算相似值。样本尺度要求是顺序的（ordinal），较简便，直观，从非计量的样本导出计量的分析结果，应用范围更广，但没法知道评估准则，效果较差。参考MDS（multidimensional scaling）多维尺度分析</p>
+<h4 id="tips"><a class="markdownIt-Anchor" href="#tips"></a> tips</h4>
+<p>PCA就可以概括为以下四点：</p>
+<ul>
+<li><strong>Maximize the projected variance</strong></li>
+<li><strong>Search for the basis vectors of the subspace</strong></li>
+<li><strong>Top d eigenvectors</strong></li>
+<li><strong>Covariance matrix</strong></li>
+</ul>
+<p>Classical MDS也可以用四点来概括：</p>
+<ul>
+<li><strong>Classical MDS</strong></li>
+<li><strong>Preserve pairwise squared distances</strong></li>
+<li><strong>Top d eigenvectors</strong></li>
+<li><strong>Gram matrix / Inner product matrix</strong></li>
+</ul>
+<h3 id="r实现"><a class="markdownIt-Anchor" href="#r实现"></a> R实现</h3>
+<p>SMACOF(SMACOF stands for Stress Majorization of a COmplicated Function)详细阐述了通过majorization算法解决的多维尺度问题（MDS）的方法。要最小化的目标函数称为应力(stress)，并详细说明了使应力最大化的函数。这种解决 MDS 问题的策略称为 SMACOF，它在本文中介绍的同名 R 包中实现。根据配置约束(conffiguration constraints)、三向数据(three-way data)、展开模型(unfolding models)以及将结果配置投影到球体和其他二次曲面上(projection of the resulting configurations onto spheres and other quadratic surfaces)来扩展基本的 SMACOF 理论。</p>
+<p>smacof 包提供了广泛的 MDS 实现。基本实现是对称 SMACOF( symmetric SMACOF)，即对称输入相异矩阵上的 MDS，具有比率(ratio)、区间(interval)、序数(ordinal)和近似值的线性变换(spline transformations of the proximities)选项。提供了验证性 MDS（内部、外部限制）以及个体差异缩放（INDSCAL、IDIOSCAL 和friends）方面的扩展.</p>
+<h4 id="使用smacof分析经典的mds的策略"><a class="markdownIt-Anchor" href="#使用smacof分析经典的mds的策略"></a> 使用smacof分析经典的MDS的策略</h4>
+<p>MDS 输入数据通常是基于观察到的数据的异质 n × n 矩阵 Δ。 ∆ 是对称的、非负的和空心的（即对角线为零）</p>
+<h5 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h5>
+<p>MDS 是一种表示对象（变量、个体等）之间关联的方法，需要一个邻近矩阵作为输入。我们区分两种类型的输入数据：直接观察到的近似值和派生的近似值。在第一种情况下，在实验中直接观察/收集接近度（例如，参与者对刺激之间的成对相似性进行评分）。 MDS 文献中的一个经典示例是包附带的 Ekman 数据集：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>smacof<span class="punctuation">)</span></span><br><span class="line"><span class="comment">#&gt; Loading required package: plotrix</span></span><br><span class="line"><span class="comment">#&gt; Loading required package: colorspace</span></span><br><span class="line"><span class="comment">#&gt; Loading required package: e1071</span></span><br><span class="line"><span class="comment">#&gt; </span></span><br><span class="line"><span class="comment">#&gt; Attaching package: &#x27;smacof&#x27;</span></span><br><span class="line"><span class="comment">#&gt; The following object is masked from &#x27;package:base&#x27;:</span></span><br><span class="line"><span class="comment">#&gt; </span></span><br><span class="line"><span class="comment">#&gt;     transform</span></span><br><span class="line">ekman</span><br><span class="line"><span class="comment">#&gt;      434  445  465  472  490  504  537  555  584  600  610  628  651</span></span><br><span class="line"><span class="comment">#&gt; 445 0.86                                                            </span></span><br><span class="line"><span class="comment">#&gt; 465 0.42 0.50                                                       </span></span><br><span class="line"><span class="comment">#&gt; 472 0.42 0.44 0.81                                                  </span></span><br><span class="line"><span class="comment">#&gt; 490 0.18 0.22 0.47 0.54                                             </span></span><br><span class="line"><span class="comment">#&gt; 504 0.06 0.09 0.17 0.25 0.61                                        </span></span><br><span class="line"><span class="comment">#&gt; 537 0.07 0.07 0.10 0.10 0.31 0.62                                   </span></span><br><span class="line"><span class="comment">#&gt; 555 0.04 0.07 0.08 0.09 0.26 0.45 0.73                              </span></span><br><span class="line"><span class="comment">#&gt; 584 0.02 0.02 0.02 0.02 0.07 0.14 0.22 0.33                         </span></span><br><span class="line"><span class="comment">#&gt; 600 0.07 0.04 0.01 0.01 0.02 0.08 0.14 0.19 0.58                    </span></span><br><span class="line"><span class="comment">#&gt; 610 0.09 0.07 0.02 0.00 0.02 0.02 0.05 0.04 0.37 0.74               </span></span><br><span class="line"><span class="comment">#&gt; 628 0.12 0.11 0.01 0.01 0.01 0.02 0.02 0.03 0.27 0.50 0.76          </span></span><br><span class="line"><span class="comment">#&gt; 651 0.13 0.13 0.05 0.02 0.02 0.02 0.02 0.02 0.20 0.41 0.62 0.85     </span></span><br><span class="line"><span class="comment">#&gt; 674 0.16 0.14 0.03 0.04 0.00 0.01 0.00 0.02 0.23 0.28 0.55 0.68 0.76</span></span><br></pre></td></tr></table></figure>
+<p>该矩阵的元素是波长从 434 nm 到 674 nm 的颜色的相似性（混淆比例）。重要提示：<code>smacof</code> 需要不同的输入！因此，我们需要将这些相似之处转化为不同之处。 <code>sim2diss()</code> 函数支持用户进行这种转换。在这里，我们可以简单地从 1 中减去比例<code>（method = &quot;confusion&quot;）</code>。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ekmanD <span class="operator">&lt;-</span> sim2diss<span class="punctuation">(</span>ekman<span class="punctuation">,</span> method <span class="operator">=</span> <span class="string">&quot;confusion&quot;</span><span class="punctuation">,</span> to.dist <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>在现代 MDS 应用程序中，更常见的输入数据场景是派生近似值。起点是标准数据帧结构。例如，我们使用 MPsychoR 包中的 PTSD 症状数据集。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>MPsychoR<span class="punctuation">)</span></span><br><span class="line">data<span class="punctuation">(</span>Wenchuan<span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>Wenchuan<span class="punctuation">)</span></span><br><span class="line"><span class="comment">#&gt;   intrusion dreams flash upset physior avoidth avoidact amnesia lossint distant</span></span><br><span class="line"><span class="comment">#&gt; 1         2      2     2     2       3       2        3       2       3       2</span></span><br><span class="line"><span class="comment">#&gt; 2         2      2     2     3       3       3        3       2       3       3</span></span><br><span class="line"><span class="comment">#&gt; 3         2      4     4     4       3       3        3       5       4       3</span></span><br><span class="line"><span class="comment">#&gt; 4         2      1     2     2       1       1        2       2       2       1</span></span><br><span class="line"><span class="comment">#&gt; 5         2      2     2     2       2       2        2       2       3       2</span></span><br><span class="line"><span class="comment">#&gt; 6         4      3     2     2       2       2        3       3       2       2</span></span><br><span class="line"><span class="comment">#&gt;   numb future sleep anger concen hyper startle</span></span><br><span class="line"><span class="comment">#&gt; 1    2      1     3     4      3     4       2</span></span><br><span class="line"><span class="comment">#&gt; 2    2      2     3     3      2     3       3</span></span><br><span class="line"><span class="comment">#&gt; 3    2      3     4     4      4     3       4</span></span><br><span class="line"><span class="comment">#&gt; 4    1      2     2     1      2     3       3</span></span><br><span class="line"><span class="comment">#&gt; 5    2      2     3     2      3     2       3</span></span><br><span class="line"><span class="comment">#&gt; 6    2      3     2     3      2     3       2</span></span><br></pre></td></tr></table></figure>
+<p>我们总共收集了 362 个人的 17 种 PTSD 症状。我们需要将该矩阵转换为相异性。如果我们想缩放症状，一种流行的策略是计算相关矩阵（相似性），然后将其转换为相异矩阵。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">Rmat <span class="operator">&lt;-</span> cor<span class="punctuation">(</span>Wenchuan<span class="punctuation">,</span> use <span class="operator">=</span> <span class="string">&quot;pairwise.complete.obs&quot;</span><span class="punctuation">)</span></span><br><span class="line">Delta <span class="operator">&lt;-</span> sim2diss<span class="punctuation">(</span>Rmat<span class="punctuation">,</span> method <span class="operator">=</span> <span class="string">&quot;corr&quot;</span><span class="punctuation">,</span> to.dist <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line"><span class="built_in">round</span><span class="punctuation">(</span>Delta<span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#&gt;          intrusion dreams flash upset physior avoidth avoidact amnesia lossint</span></span><br><span class="line"><span class="comment">#&gt; dreams        0.53                                                            </span></span><br><span class="line"><span class="comment">#&gt; flash         0.59   0.56                                                     </span></span><br><span class="line"><span class="comment">#&gt; upset         0.65   0.65  0.67                                               </span></span><br><span class="line"><span class="comment">#&gt; physior       0.64   0.65  0.64  0.54                                         </span></span><br><span class="line"><span class="comment">#&gt; avoidth       0.75   0.73  0.71  0.67    0.71                                 </span></span><br><span class="line"><span class="comment">#&gt; avoidact      0.76   0.74  0.73  0.68    0.70    0.45                         </span></span><br><span class="line"><span class="comment">#&gt; amnesia       0.77   0.76  0.73  0.74    0.73    0.73     0.72                </span></span><br><span class="line"><span class="comment">#&gt; lossint       0.77   0.78  0.77  0.77    0.75    0.70     0.69    0.74        </span></span><br><span class="line"><span class="comment">#&gt; distant       0.79   0.79  0.80  0.79    0.74    0.78     0.73    0.76    0.64</span></span><br><span class="line"><span class="comment">#&gt; numb          0.81   0.84  0.80  0.83    0.77    0.82     0.81    0.75    0.73</span></span><br><span class="line"><span class="comment">#&gt; future        0.72   0.79  0.75  0.73    0.74    0.81     0.79    0.73    0.77</span></span><br><span class="line"><span class="comment">#&gt; sleep         0.69   0.69  0.71  0.70    0.72    0.70     0.73    0.79    0.73</span></span><br><span class="line"><span class="comment">#&gt; anger         0.74   0.77  0.78  0.74    0.75    0.78     0.79    0.78    0.72</span></span><br><span class="line"><span class="comment">#&gt; concen        0.76   0.74  0.72  0.75    0.74    0.77     0.78    0.75    0.66</span></span><br><span class="line"><span class="comment">#&gt; hyper         0.69   0.68  0.67  0.70    0.66    0.74     0.72    0.75    0.71</span></span><br><span class="line"><span class="comment">#&gt; startle       0.75   0.75  0.70  0.69    0.71    0.75     0.77    0.78    0.74</span></span><br><span class="line"><span class="comment">#&gt;          distant numb future sleep anger concen hyper</span></span><br><span class="line"><span class="comment">#&gt; dreams                                               </span></span><br><span class="line"><span class="comment">#&gt; flash                                                </span></span><br><span class="line"><span class="comment">#&gt; upset                                                </span></span><br><span class="line"><span class="comment">#&gt; physior                                              </span></span><br><span class="line"><span class="comment">#&gt; avoidth                                              </span></span><br><span class="line"><span class="comment">#&gt; avoidact                                             </span></span><br><span class="line"><span class="comment">#&gt; amnesia                                              </span></span><br><span class="line"><span class="comment">#&gt; lossint                                              </span></span><br><span class="line"><span class="comment">#&gt; distant                                              </span></span><br><span class="line"><span class="comment">#&gt; numb        0.67                                     </span></span><br><span class="line"><span class="comment">#&gt; future      0.73 0.67                                </span></span><br><span class="line"><span class="comment">#&gt; sleep       0.78 0.79   0.71                         </span></span><br><span class="line"><span class="comment">#&gt; anger       0.76 0.74   0.71  0.63                   </span></span><br><span class="line"><span class="comment">#&gt; concen      0.73 0.72   0.67  0.63  0.57             </span></span><br><span class="line"><span class="comment">#&gt; hyper       0.75 0.70   0.65  0.64  0.64   0.58      </span></span><br><span class="line"><span class="comment">#&gt; startle     0.80 0.74   0.72  0.63  0.67   0.59  0.53</span></span><br></pre></td></tr></table></figure>
+<p>至此，我们已准备好安装 MDS。</p>
+<h5 id="mds的选择"><a class="markdownIt-Anchor" href="#mds的选择"></a> MDS的选择</h5>
+<p>MDS 试图实现的目标是将这些差异表示为低维空间中的距离。大多数情况下，研究人员使用两个或三个维度来绘制结果配置。执行 2D MDS 的最简单调用如下。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mds_wen1 <span class="operator">&lt;-</span> mds<span class="punctuation">(</span>Delta<span class="punctuation">)</span></span><br><span class="line">mds_wen1</span><br><span class="line"><span class="comment">#&gt; </span></span><br><span class="line"><span class="comment">#&gt; Call:</span></span><br><span class="line"><span class="comment">#&gt; mds(delta = Delta)</span></span><br><span class="line"><span class="comment">#&gt; </span></span><br><span class="line"><span class="comment">#&gt; Model: Symmetric SMACOF </span></span><br><span class="line"><span class="comment">#&gt; Number of objects: 17 </span></span><br><span class="line"><span class="comment">#&gt; Stress-1 value: 0.309 </span></span><br><span class="line"><span class="comment">#&gt; Number of iterations: 59</span></span><br></pre></td></tr></table></figure>
+<p>打印输出显示了一种称为“压力”的度量，它告诉我们解决方案与数据的拟合程度。在完美契合的情况下它变为 0。对于这个简单的 MDS 问题，0.309 的值不是很好。请注意，在 MDS 文献中存在压力经验法则。我们强烈建议结合使用多种诊断方法（参见 Mair、Borg 和 Rusch 2016）来评估拟合优度，而不是依赖这些经验法则。 这就是说，我们需要改进这个解决方案。我们可以增加维度的数量，但很难绘制解决方案。相反，我们可以选择更灵活的转换函数。现代 MDS 实现提供了转换输入差异的选项。与 cmdscale() 中的经典缩放实现相比，这是一个很大的优势。 mds() 中使用的默认值是比率转换，它本质上表示不触及输入差异。我们可以通过允许一些更灵活的东西来放松这个限制，例如导致阶跃函数的序数变换。谢泼德图可以深入了解这些转变。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mds_wen2 <span class="operator">&lt;-</span> mds<span class="punctuation">(</span>Delta<span class="punctuation">,</span> type <span class="operator">=</span> <span class="string">&quot;ordinal&quot;</span><span class="punctuation">)</span></span><br><span class="line">plot<span class="punctuation">(</span>mds_wen1<span class="punctuation">,</span> plot.type <span class="operator">=</span> <span class="string">&quot;Shepard&quot;</span><span class="punctuation">,</span> main <span class="operator">=</span> <span class="string">&quot;Shepard Diagram (Ratio Transformation)&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<img src="/img/mds/1.png" alt="1" style="zoom:80%;" />
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot<span class="punctuation">(</span>mds_wen2<span class="punctuation">,</span> plot.type <span class="operator">=</span> <span class="string">&quot;Shepard&quot;</span><span class="punctuation">,</span> main <span class="operator">=</span> <span class="string">&quot;Shepard Diagram (Ordinal Transformation)&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<img src="/img/mds/2.png" alt="2" style="zoom:80%;" />
+<p>我们应该如何决定一个转换函数？一种选择是在数据驱动的基础(data driven basis)上做出决定。尝试不同的变换函数（“interval”是另一种流行的函数），查看 Shepard 图，并选择一个导致可接受的低应力值同时保持变换尽可能简单的变换函数（&quot;ordinal&quot;变换总是给出最低应力这是最灵活的转换）。另一种选择是根据临时规模水平或实质性考虑来决定。例如，在这个例子中，我们可以争辩说原始数据是用 Likert  scale测量的，因此我们使用ordinal变换来处理不同之处。 让我们看一下序数 MDS 拟合的输出：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mds_wen2</span><br><span class="line"><span class="comment">#&gt; </span></span><br><span class="line"><span class="comment">#&gt; Call:</span></span><br><span class="line"><span class="comment">#&gt; mds(delta = Delta, type = &quot;ordinal&quot;)</span></span><br><span class="line"><span class="comment">#&gt; </span></span><br><span class="line"><span class="comment">#&gt; Model: Symmetric SMACOF </span></span><br><span class="line"><span class="comment">#&gt; Number of objects: 17 </span></span><br><span class="line"><span class="comment">#&gt; Stress-1 value: 0.145 </span></span><br><span class="line"><span class="comment">#&gt; Number of iterations: 22</span></span><br></pre></td></tr></table></figure>
+<p>与比率拟合相比，我们看到应力值急剧下降。假设我们对这个解决方案感到满意，我们现在准备在 MDS 中生成最重要的输出：配置图。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot<span class="punctuation">(</span>mds_wen2<span class="punctuation">,</span> main <span class="operator">=</span> <span class="string">&quot;PTSD Symptoms Configuration&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<img src="/img/mds/3.png" alt="3" style="zoom:80%;" />
+<p>MDS 的一个很好的特性是这个配置图非常直观，因为点的位置很重要（与相关网络相反）并且任何两点之间的距离都是欧几里得。配置中的两个症状越接近，它们的关联就越强。 维度的解释并不像在 PCA 中那样重要。有时研究人员会找到一种解释，而有时，就像我们的例子一样，没有直接的解释。请注意，如果这有助于解释，则可以任意旋转此配置。有关解释配置图的更多详细信息，请参阅 Borg、Groenen 和 Mair (2018)、Mair (2018) 和主包小插图<code>vignette(&quot;smacof&quot;)</code>。 最后一点，对于更喜欢 ggplot 风格的用户，这里有一些基本代码：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br><span class="line">conf_wen <span class="operator">&lt;-</span> as.data.frame<span class="punctuation">(</span>mds_wen2<span class="operator">$</span>conf<span class="punctuation">)</span></span><br><span class="line">p <span class="operator">&lt;-</span> ggplot<span class="punctuation">(</span>conf_wen<span class="punctuation">,</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> D1<span class="punctuation">,</span> y <span class="operator">=</span> D2<span class="punctuation">,</span> label <span class="operator">=</span> rownames<span class="punctuation">(</span>conf_wen<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span> </span><br><span class="line">p <span class="operator">+</span> geom_point<span class="punctuation">(</span>size <span class="operator">=</span> <span class="number">0.9</span><span class="punctuation">)</span> <span class="operator">+</span> coord_fixed<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">+</span> geom_text<span class="punctuation">(</span>size <span class="operator">=</span> <span class="number">3.5</span><span class="punctuation">,</span> vjust <span class="operator">=</span> <span class="operator">-</span><span class="number">0.8</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  ggtitle<span class="punctuation">(</span><span class="string">&quot;PTSD Symptoms Configuration&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<img src="/img/mds/4.png" alt="4" style="zoom:80%;" />
+<p>为了以欧几里得方式解释距离，将纵横比固定为 1 很重要。为了避免标签重叠，ggrepel 包提供了一些不错的选项。</p>
+<h3 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h3>
+<p>1，<a target="_blank" rel="noopener" href="https://blog.csdn.net/mingjinliu/article/details/70194660">刘明进的多维尺度变换</a></p>
+<p>2，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/50715681">李新春的Multidimensional Scaling(MDS)</a></p>
+<p>3,<a target="_blank" rel="noopener" href="https://mran.microsoft.com/snapshot/2018-05-13/web/packages/smacof/vignettes/smacof.pdf">Multidimensional Scaling in R: SMACOF</a></p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Kruskal JB, Wish M (1978). Multidimensional Scaling (Sage University Paper Series on Quantitative Applications in the Social Sciences, 07-011). Sage Publications, Newbury<br />
+Park, CA <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Cox TF, Cox MAA (2001). Multidimensional Scaling. 2nd edition. Chapman &amp; Hall/CRC,Boca Raton, FL. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://yuanzhen-lucas.github.io">Yuanzhen</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yuanzhen-lucas.github.io/2022/09/07/%E5%A4%9A%E7%BB%B4%E7%BC%A9%E6%94%BE-MDS-%E5%88%86%E6%9E%90/">https://yuanzhen-lucas.github.io/2022/09/07/%E5%A4%9A%E7%BB%B4%E7%BC%A9%E6%94%BE-MDS-%E5%88%86%E6%9E%90/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yuanzhen-lucas.github.io" target="_blank">袁仲之的生信之旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="post-meta__tags" href="/tags/Multidimensional-Scaling/">Multidimensional Scaling</a></div><div class="post_share"><div class="social-share" data-image="/img/index.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/09/07/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E4%B8%AD%E7%9A%84%E7%BB%9F%E8%AE%A1%E7%9F%A5%E8%AF%86/"><img class="prev-cover" src="/img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">基因组学中的统计知识</div></div></a></div><div class="next-post pull-right"><a href="/2022/09/07/%E6%A4%8D%E7%89%A9%E4%BD%93%E7%BB%86%E8%83%9E%E8%83%9A%E8%83%8E%E5%8F%91%E7%94%9F%E7%9A%84%E6%9F%93%E8%89%B2%E8%B4%A8%E5%8F%AF%E5%8F%8A%E6%80%A7%E5%8A%A8%E5%8A%9B%E5%AD%A6%E5%92%8C%E5%88%86%E7%BA%A7%E8%BD%AC%E5%BD%95%E8%B0%83%E6%8E%A7%E7%BD%91%E7%BB%9C/"><img class="next-cover" src="/img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">植物体细胞胚胎发生的染色质可及性动力学和分级转录调控网络</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/" title="机器学习之基础篇"><img class="cover" src="/img/index.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-14</div><div class="title">机器学习之基础篇</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yuanzhen</div><div class="author-info__description">My thoughts of study or love</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yuanzhen-lucas"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yuanzhen-lucas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2339325066@qq.com.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">输出push输入</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text"> 基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%A6%E9%87%8F%E5%9E%8B%E5%A4%9A%E7%BB%B4%E5%B0%BA%E5%BA%A6%E5%8F%98%E6%8D%A2"><span class="toc-number">1.1.</span> <span class="toc-text"> 度量型多维尺度变换</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E5%A4%9A%E7%BB%B4%E5%B0%BA%E5%BA%A6%E5%8F%98%E6%8D%A2"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 经典多维尺度变换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9D%9E%E7%BB%8F%E5%85%B8%E5%A4%9A%E7%BB%B4%E5%B0%BA%E5%BA%A6%E5%8F%98%E6%8D%A2"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 非经典多维尺度变换</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%BA%A6%E9%87%8F%E5%9E%8B%E5%A4%9A%E7%BB%B4%E5%B0%BA%E5%BA%A6%E5%8F%98%E6%8D%A2"><span class="toc-number">1.2.</span> <span class="toc-text"> 非度量型多维尺度变换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E5%A4%9A%E7%BB%B4%E5%B0%BA%E5%BA%A6%E5%8F%98%E6%8D%A2%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">1.3.</span> <span class="toc-text"> 两种多维尺度变换的比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tips"><span class="toc-number">1.4.</span> <span class="toc-text"> tips</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#r%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text"> R实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8smacof%E5%88%86%E6%9E%90%E7%BB%8F%E5%85%B8%E7%9A%84mds%E7%9A%84%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.</span> <span class="toc-text"> 使用smacof分析经典的MDS的策略</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 数据结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mds%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">2.1.2.</span> <span class="toc-text"> MDS的选择</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">3.</span> <span class="toc-text"> 参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/09/07/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E4%B8%AD%E7%9A%84%E7%BB%9F%E8%AE%A1%E7%9F%A5%E8%AF%86/" title="基因组学中的统计知识"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基因组学中的统计知识"/></a><div class="content"><a class="title" href="/2022/09/07/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E4%B8%AD%E7%9A%84%E7%BB%9F%E8%AE%A1%E7%9F%A5%E8%AF%86/" title="基因组学中的统计知识">基因组学中的统计知识</a><time datetime="2022-09-07T12:49:21.000Z" title="发表于 2022-09-07 20:49:21">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/07/%E5%A4%9A%E7%BB%B4%E7%BC%A9%E6%94%BE-MDS-%E5%88%86%E6%9E%90/" title="多维缩放(MDS)分析"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="多维缩放(MDS)分析"/></a><div class="content"><a class="title" href="/2022/09/07/%E5%A4%9A%E7%BB%B4%E7%BC%A9%E6%94%BE-MDS-%E5%88%86%E6%9E%90/" title="多维缩放(MDS)分析">多维缩放(MDS)分析</a><time datetime="2022-09-07T06:33:24.000Z" title="发表于 2022-09-07 14:33:24">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/07/%E6%A4%8D%E7%89%A9%E4%BD%93%E7%BB%86%E8%83%9E%E8%83%9A%E8%83%8E%E5%8F%91%E7%94%9F%E7%9A%84%E6%9F%93%E8%89%B2%E8%B4%A8%E5%8F%AF%E5%8F%8A%E6%80%A7%E5%8A%A8%E5%8A%9B%E5%AD%A6%E5%92%8C%E5%88%86%E7%BA%A7%E8%BD%AC%E5%BD%95%E8%B0%83%E6%8E%A7%E7%BD%91%E7%BB%9C/" title="植物体细胞胚胎发生的染色质可及性动力学和分级转录调控网络"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="植物体细胞胚胎发生的染色质可及性动力学和分级转录调控网络"/></a><div class="content"><a class="title" href="/2022/09/07/%E6%A4%8D%E7%89%A9%E4%BD%93%E7%BB%86%E8%83%9E%E8%83%9A%E8%83%8E%E5%8F%91%E7%94%9F%E7%9A%84%E6%9F%93%E8%89%B2%E8%B4%A8%E5%8F%AF%E5%8F%8A%E6%80%A7%E5%8A%A8%E5%8A%9B%E5%AD%A6%E5%92%8C%E5%88%86%E7%BA%A7%E8%BD%AC%E5%BD%95%E8%B0%83%E6%8E%A7%E7%BD%91%E7%BB%9C/" title="植物体细胞胚胎发生的染色质可及性动力学和分级转录调控网络">植物体细胞胚胎发生的染色质可及性动力学和分级转录调控网络</a><time datetime="2022-09-07T03:01:56.000Z" title="发表于 2022-09-07 11:01:56">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/07/%E7%BB%84%E5%AD%A6%E7%A0%B4%E8%A7%A3%E9%A1%BA%E5%BC%8F%E8%B0%83%E6%8E%A7%E5%AF%86%E7%A0%81/" title="组学破解顺式调控密码"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="组学破解顺式调控密码"/></a><div class="content"><a class="title" href="/2022/09/07/%E7%BB%84%E5%AD%A6%E7%A0%B4%E8%A7%A3%E9%A1%BA%E5%BC%8F%E8%B0%83%E6%8E%A7%E5%AF%86%E7%A0%81/" title="组学破解顺式调控密码">组学破解顺式调控密码</a><time datetime="2022-09-07T02:35:50.000Z" title="发表于 2022-09-07 10:35:50">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/06/R%E7%88%AC%E5%8F%96%E6%95%B0%E6%8D%AE%E7%AE%80%E4%BE%8B/" title="R爬取数据简例"><img src="/img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="R爬取数据简例"/></a><div class="content"><a class="title" href="/2022/09/06/R%E7%88%AC%E5%8F%96%E6%95%B0%E6%8D%AE%E7%AE%80%E4%BE%8B/" title="R爬取数据简例">R爬取数据简例</a><time datetime="2022-09-06T07:03:19.000Z" title="发表于 2022-09-06 15:03:19">2022-09-06</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Yuanzhen</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '23dadb2aabf650c395c1',
+      clientSecret: '7f2cc4cb13c603348ddf0abeafc7d069cbc0e3d5',
+      repo: 'Daily_server_management',
+      owner: 'yuanzhen-lucas',
+      admin: ['yuanzhen-lucas'],
+      id: 'fbf29b7240e0fd39dce3f2b922c2467b',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
