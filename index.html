@@ -7,10 +7,20 @@
   <title>Lucas Yuan Zhen | Research Portfolio</title>
   <style>
     :root {
-      --accent: #004aad;
-      --bg: #f9fafb;
-      --text: #222;
-      --card-bg: #fff;
+      --accent: #000;       /* black for headings and links */
+      --bg: #fff;           /* white background */
+      --text: #000;         /* black text */
+      --card-bg: #f8f8f8;   /* light gray for cards */
+    }
+    header {
+      background: var(--bg); /* white header */
+      olor: var(--text);    /* black text */
+    }
+    nav {
+      background: #fff;
+    }
+    nav a {
+      color: var(--accent);
     }
 
     body {
@@ -97,6 +107,7 @@
 <body>
 
   <header>
+    <img src="your-photo.jpg" alt="Lucas Yuan Zhen" style="width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:1rem;">
     <h1>Lucas Yuan Zhen</h1>
     <p>PhD student researching artificial intelligence for human disease</p>
   </header>
