@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="PhD student researching artificial intelligence for human disease.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lucas Yuan Zhen | Research Portfolio</title>
   <style>
     :root {
@@ -15,63 +14,59 @@
     }
 
     body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      display: flex;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      min-height: 100vh;
     }
 
-    header {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
+    /* Sidebar / Left Header */
+    aside {
+      width: 250px;
       background: var(--section-bg);
-      padding: 2rem;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-right: 1px solid var(--border-color);
+      box-sizing: border-box;
     }
 
-    header img {
+    aside img {
       width: 150px;
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
       border: 1px solid var(--border-color);
+      margin-bottom: 1rem;
     }
 
-    header div {
-      display: flex;
-      flex-direction: column;
+    aside h1 {
+      font-size: 1.8rem;
+      margin: 0.5rem 0;
+      text-align: center;
     }
 
-    header h1 {
-      margin: 0 0 0.5rem 0;
-      font-size: 2rem;
-    }
-
-    header p {
-      margin: 0.2rem 0;
-    }
-
-    nav {
-      background: var(--bg);
-      padding: 0.5rem 2rem;
-    }
-
-    nav a {
+    aside p, aside a {
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 0.3rem 0;
       color: var(--text);
       text-decoration: none;
-      margin-right: 1.5rem;
-      font-weight: 500;
     }
 
-    nav a:hover {
+    aside a:hover {
       text-decoration: underline;
     }
 
-    section {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    /* Main content */
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     h2 {
@@ -89,96 +84,105 @@
       border: 1px solid var(--border-color);
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      background: var(--section-bg);
-      color: #555;
-      margin-top: 3rem;
-      font-size: 0.9rem;
+    nav {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.5rem;
+      gap: 0.5rem;
     }
 
-    a {
+    nav a {
+      text-decoration: none;
       color: var(--text);
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #555;
     }
 
   </style>
 </head>
-
 <body>
 
-  <header>
-    <img src="your-photo.jpg" alt="Lucas Yuan Zhen">
-    <div>
-      <h1>Lucas Yuan Zhen</h1>
-      <p>Email: <a href="mailto:yc47658@connect.um.edu.mo">yc47658@connect.um.edu.mo</a></p>
-      <p>Address: Faculty of Health Sciences, University of Macau, Macao SAR, China</p>
-    </div>
-  </header>
+  <aside>
+    <img src="lucas.jpeg" alt="Lucas Yuan Zhen">
+    <h1>Lucas Yuan Zhen</h1>
+    <p>Email: <a href="mailto:yc47658@connect.um.edu.mo">yc47658@connect.um.edu.mo</a></p>
+    <p>Faculty of Health Sciences</p>
+    <p>University of Macau, Macao SAR, China</p>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>
-      I am a PhD student researching artificial intelligence for human disease.
-      My work focuses on developing interpretable machine-learning models for clinical and biomedical data, including medical imaging and multi-omics datasets.
-      I collaborate with clinicians to translate computational methods into tools that support diagnosis and treatment decisions.
-    </p>
-  </section>
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        I am a PhD student researching artificial intelligence for human disease.
+        My work focuses on developing interpretable machine-learning models for clinical and biomedical data, including medical imaging and multi-omics datasets.
+        I collaborate with clinicians to translate computational methods into tools that support diagnosis and treatment decisions.
+      </p>
+    </section>
 
-  <section id="research">
-    <h2>Research</h2>
+    <section id="research">
+      <h2>Research</h2>
+      <div class="research-item">
+        <strong>Artificial Intelligence and Human Disease</strong>
+        <p>Developing AI and machine learning models to better understand and predict human diseases through biomedical data analysis.</p>
+      </div>
+      <div class="research-item">
+        <strong>Statistical Analysis of Public Health</strong>
+        <p>Applying statistical modeling and data analysis techniques to identify patterns and determinants in large-scale health datasets.</p>
+      </div>
+      <div class="research-item">
+        <strong>Single-cell Technology Research</strong>
+        <p>Exploring single-cell sequencing data to uncover cellular heterogeneity and mechanisms of disease progression.</p>
+      </div>
+      <div class="research-item">
+        <strong>Epigenetics in Cell Fate and Regeneration</strong>
+        <p>Studying the epigenetic regulation of cell identity and tissue regeneration through integrative computational methods.</p>
+      </div>
+    </section>
 
-    <div class="research-item">
-      <strong>Artificial Intelligence and Human Disease</strong>
-      <p>Developing AI and machine learning models to better understand and predict human diseases through biomedical data analysis.</p>
-    </div>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project">
+        <ul>
+          <li><strong>Project 1:</strong> AI-assisted Disease Diagnosis – Machine learning models for early detection of chronic diseases.</li>
+          <li><strong>Project 2:</strong> Single-cell Transcriptomics Analysis – Identifying cell-type-specific biomarkers in regenerative biology.</li>
+        </ul>
+      </div>
+    </section>
 
-    <div class="research-item">
-      <strong>Statistical Analysis of Public Health</strong>
-      <p>Applying statistical modeling and data analysis techniques to identify patterns and determinants in large-scale health datasets.</p>
-    </div>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:yc47658@connect.um.edu.mo">yc47658@connect.um.edu.mo</a><br>
+        GitHub: <a href="https://github.com/yuanzhen-lucas" target="_blank">github.com/yuanzhen-lucas</a><br>
+        LinkedIn: <a href="https://www.linkedin.com/in/振-袁-a99919321/" target="_blank">LinkedIn Profile</a><br>
+        Address: Faculty of Health Sciences, University of Macau, Macao SAR, China
+      </p>
+    </section>
 
-    <div class="research-item">
-      <strong>Single-cell Technology Research</strong>
-      <p>Exploring single-cell sequencing data to uncover cellular heterogeneity and mechanisms of disease progression.</p>
-    </div>
-
-    <div class="research-item">
-      <strong>Epigenetics in Cell Fate and Regeneration</strong>
-      <p>Studying the epigenetic regulation of cell identity and tissue regeneration through integrative computational methods.</p>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <ul>
-        <li><strong>Project 1:</strong> AI-assisted Disease Diagnosis – Machine learning models for early detection of chronic diseases.</li>
-        <li><strong>Project 2:</strong> Single-cell Transcriptomics Analysis – Identifying cell-type-specific biomarkers in regenerative biology.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      Email: <a href="mailto:yc47658@connect.um.edu.mo">yc47658@connect.um.edu.mo</a><br>
-      GitHub: <a href="https://github.com/yuanzhen-lucas" target="_blank">github.com/yuanzhen-lucas</a><br>
-      LinkedIn: <a href="https://www.linkedin.com/in/振-袁-a99919321/" target="_blank">LinkedIn Profile</a><br>
-      Address: Faculty of Health Sciences, University of Macau, Macao SAR, China
-    </p>
-  </section>
-
-  <footer>
-    © 2025 Lucas Yuan Zhen — All rights reserved.
-  </footer>
+    <footer>
+      © 2025 Lucas Yuan Zhen — All rights reserved.
+    </footer>
+  </main>
 
 </body>
 </html>
